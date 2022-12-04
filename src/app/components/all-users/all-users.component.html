@@ -1,0 +1,78 @@
+<div class="container-fuild">
+    <div class="header-title">Dashboard</div>
+    <mat-form-field appearance="standard">
+        <mat-label>Search by name</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. nirav" #input />
+      </mat-form-field>
+      <button class="btn  btn-outline-secondary add-btn mt-2" routerLink="add-user">+ Add User</button>
+</div>
+  <div>
+    <table mat-table [dataSource]="dataSource" matSort class="table table-hover">
+      <ng-container matColumnDef="firstName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>First Name</th>
+        <td mat-cell *matCellDef="let row">{{ row.firstName }}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="lastName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</th>
+        <td mat-cell *matCellDef="let row">{{ row.lastName }}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="city">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>City</th>
+        <td mat-cell *matCellDef="let row">{{ row.city }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="state">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>State</th>
+        <td mat-cell *matCellDef="let row">{{ row.state }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="country">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Country</th>
+        <td mat-cell *matCellDef="let row">{{ row.country }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="phoneNumber">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Phone</th>
+        <td mat-cell *matCellDef="let row">{{ row.phoneNumber}}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+        <td mat-cell *matCellDef="let row">{{ row.email }}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="password">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Password</th>
+        <td mat-cell *matCellDef="let row">{{ row.password }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="dob">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Date of Birth</th>
+        <td mat-cell *matCellDef="let row">{{ row.dob | date:'dd-MM-yyyy'}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+        <td mat-cell *matCellDef="let row">{{ row.status }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell justify-content-center" colspan="11">
+            <h3 class="no-record mt-2">No Record Found</h3>
+        </td>
+      </tr>
+    </table>
+  
+    <mat-paginator
+      [pageSizeOptions]="[5, 10, 15, 20]"
+      aria-label="Select page of users"
+    ></mat-paginator>
+  </div>
+  
+  
+  
